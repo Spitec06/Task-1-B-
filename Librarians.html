@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Librarians - Library of Ruina Fan Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #0b0b0f;
+      --text-color: #e0e0e0;
+      --accent-color: #c59d5f;
+      --button-bg: #222;
+      --button-hover: #c59d5f;
+      --nav-bg: #161616;
+      --header-bg: #111;
+    }
+
+    body.dark-mode {
+      --bg-color: #e0e0e0;
+      --text-color: #111;
+      --accent-color: #914e2d;
+      --button-bg: #ccc;
+      --button-hover: #914e2d;
+      --nav-bg: #f0f0f0;
+      --header-bg: #ddd;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      padding: 2em;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: var(--accent-color);
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+
+
+    nav {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em 0;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    nav a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 1.5em;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-shadow: 0 0 8px var(--accent-color);
+    }
+
+    main {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    main h2 {
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 0.3em;
+      margin-bottom: 1em;
+    }
+
+    .box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--accent-color);
+      padding: 1.5em;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em;
+      border-top: 2px solid var(--accent-color);
+      margin-top: 3em;
+    }
+
+    nav {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10; 
+}
+
+.dropdown > a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.dropdown > a:hover {
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--accent-color);
+  min-width: 160px;
+  z-index: 999;
+  top: 100%;
+  left: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.dropdown-content a {
+  color: var(--accent-color);
+  padding: 0.7em 1em;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.top-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--accent-color);
+  z-index: 1000;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.search-bar input[type="text"] {
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.search-bar button {
+  padding: 0.4em 0.6em;
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: var(--accent-color-hover);
+}
+
+
+.edge-image {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  z-index: 1;
+}
+
+.edge-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.3em;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.edge-image.left {
+  left: 10px;
+}
+
+.edge-image.right {
+  right: 10px;
+}
+
+@media (max-width: 900px) {
+  .edge-image {
+    display: none;
+  }
+}
+
+.full-width-carousel {
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  padding: 0.5em 0;
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1em;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.carousel-track img {
+  height: 120px;
+  width: auto;
+  border-radius: 8px;
+  border: 1px solid var(--accent-color);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.3em;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Library</h1>
+    <p>Welcome, dear Guest. Your book awaits.</p>
+
+  <nav>
+    <div class="dropdown">
+    <a href="Website Final.html">Home</a>
+      <div class="dropdown-content"></div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Characters</a>
+      <div class="dropdown-content">
+        <a href="librarians.html">Librarians</a>
+        <a href="Guests.html">Guests</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Books</a>
+      <div class="dropdown-content">
+        <a href="Combat Pages.html">Combat Pages</a>
+        <a href="Key Pages.html">Key Pages</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Battles</a>
+      <div class="dropdown-content">
+        <a href="Receptions.html">Receptions</a>
+        <a href="Abnormalities.html">Abnormalities</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="Contact.html">Contact</a>
+      <div class="dropdown-content"></div>
+    </div>
+  </nav>
+
+<main>
+  <h2>Librarians</h2>
+  <div class="box">
+    <p>Welcome to the Librarians page! Here you can find detailed info about the librarians in Library of Ruina.</p>
+  </div>
+
+  <div class="librarian-cards">
+    <div class="card">
+      <img src="10211_normal_profile.png" alt="Faust" class="card-image" />
+      <h3>Faust</h3>
+      <p>Walpurgisnacht</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Faust is an observant and intelligent woman with a highly egotistical and prideful attitude. She was the first to be affiliated with Limbus Company, having spent the time leading up to it recruiting the members of the LCB and developing Mephistopheles.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="11211_gacksung_profile.png" alt="Gregor" class="card-image" />
+      <h3>Gregor</h3>
+      <p>Ungeziefer</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Gregor is a good-humored and composed man with a bit of a competitive side. He was previously affiliated with the Smoke War, having fought for the old G Corp. alongside other bug-augmented test subjects prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="10707_normal_profile.png" alt="Heathcliff" class="card-image" />
+      <h3>Heathcliff</h3>
+      <p>Revenge</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Heathcliff is a brash and action-oriented man with a strong, dedicated spirit. He was previously affiliated with Wuthering Heights, having grown up alongside the Earnshaws and later working for the Dead Rabbits Syndicate prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="10602_gacksung_profile.png" alt="Hong Lu" class="card-image" />
+      <h3>Hong Lu</h3>
+      <p>Baoyu</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Hong Lu is a giddy and naive man with a tendency for unintentionally insensitive words. He was previously affiliated with a large and wealthy family consisting of at least six members, having lived a life of sheltered luxury prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="10806_gacksung_profile.png" alt="Ishmael" class="card-image" />
+      <h3>Ishmael</h3>
+      <p>Hearse</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Ishmael is a straight-laced and dependable woman with a tendency for blunt words. She was previously affiliated with the Pequod and its crew, having spent a great time sailing the Great Lake as a Fixer prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="10508_gacksung_profile.png" alt="Meursault" class="card-image" />
+      <h3>Meursault</h3>
+      <p>Soleil</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Meursault is a reserved and complacent man. He has a desire to be clearly communicated with. He was previously affiliated with N Corp. He failed to form an opinion on their ideals prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="11112_normal_profile.png" alt="Outis" class="card-image" />
+      <h3>Outis</h3>
+      <p>Oytie</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Outis is a brusque and assertive woman with a poorly-disguised inclination to look down on those around her. She was previously affiliated with the Smoke War, having gained a tendency to judge others based on her experiences there prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="10912_gacksung_profile.png" alt="Rodion" class="card-image" />
+      <h3>Rodion</h3>
+      <p>Packon</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Rodion,more frequently known as Rodya, she is a lighthearted and nonchalant woman with a preference for informal conversation. She was previously affiliated with the Yurodiviye, having worked to overturn the injustices of the District 25 Backstreets prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+            <div class="card">
+      <img src="10410_gacksung_profile.png" alt="Ryoshu" class="card-image" />
+      <h3>Ryoshu</h3>
+      <p>Selva Oscura</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Ryōshū is an "artistic" and ungovernable woman with little tolerance for what disinterests or offends her, meaning many of her ventures prior to Limbus Company are unknown, an implied affiliation with the Fingers of the Backstreets notwithstanding.</p>
+      </div>
+    </div>
+
+            <div class="card">
+      <img src="11009_gacksung_profile.png" alt="Sinclair" class="card-image" />
+      <h3>Sinclair</h3>
+      <p>Vogel</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Emil Sinclair, more frequently known as just Sinclair, he is an anxious and self-conscious man with a blatantly empathetic nature. He was previously affiliated with the prosthetic-famous town of Calw, having lived and attended school there prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+            <div class="card">
+      <img src="10104_gacksung_profile.png" alt="Yi Sang" class="card-image" />
+      <h3>Yi Sang</h3>
+      <p>Ha Yung</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Yi Sang is a cryptic and mellow man with a lot of thoughtfulness to him. He was a researcher and architect previously affiliated with the League of Nine Littérateurs, having invented the Mirror as a T Corp. researcher prior to joining Limbus Company.</p>
+      </div>
+    </div>
+
+                <div class="card">
+      <img src="10310_normal_profile.png" alt="Don Quixote" class="card-image" />
+      <h3>Don Quixote</h3>
+      <p>Sueno Imposible</p>
+      <button class="toggle-info">More Info</button>
+      <div class="extra-info" style="display: none;">
+        <p>Don Quixote is a rambunctious and steadfast woman with a strong sense of justice. She wants nothing more than to be affiliated with the Fixers she idolizes so heavily to the point of delusion, having earned her own Fixer Identification Number prior to recruitment.</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+.librarian-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: space-between; 
+  margin-top: 1em;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1em; 
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  padding: 1.2em;
+  width: calc(25% - 1.125em);
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    width: calc(33.333% - 1em);
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: calc(50% - 1em);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%; /
+  }
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--accent-color);
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--accent-color);
+  margin-bottom: 0.7em;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.card h3 {
+  margin: 0.3em 0;
+  color: var(--accent-color);
+}
+
+.card p {
+  margin: 0.3em 0 1em 0;
+}
+
+.toggle-info {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-info:hover {
+  background-color: var(--button-hover);
+}
+
+.extra-info {
+  margin-top: 0.8em;
+  text-align: left;
+  font-size: 0.9em;
+  color: var(--text-color);
+  border-top: 1px solid var(--accent-color);
+  padding-top: 0.7em;
+}
+
+  </style>
+
+  <script>
+    document.querySelectorAll('.toggle-info').forEach(button => {
+      button.addEventListener('click', () => {
+        const info = button.nextElementSibling;
+        if(info.style.display === 'none' || !info.style.display) {
+          info.style.display = 'block';
+          button.textContent = 'Less Info';
+        } else {
+          info.style.display = 'none';
+          button.textContent = 'More Info';
+        }
+      });
+    });
+  </script>
+</main>
+
+
+  <footer>
+    &copy; 2025 The Library. All Rights Reserved.
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if(toggleButton){
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Librarians - Library of Ruina Fan Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #0b0b0f;
+      --text-color: #e0e0e0;
+      --accent-color: #c59d5f;
+      --button-bg: #222;
+      --button-hover: #c59d5f;
+      --nav-bg: #161616;
+      --header-bg: #111;
+    }
+
+    body.dark-mode {
+      --bg-color: #e0e0e0;
+      --text-color: #111;
+      --accent-color: #914e2d;
+      --button-bg: #ccc;
+      --button-hover: #914e2d;
+      --nav-bg: #f0f0f0;
+      --header-bg: #ddd;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      padding: 2em;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: var(--accent-color);
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+
+
+    nav {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em 0;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    nav a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 1.5em;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-shadow: 0 0 8px var(--accent-color);
+    }
+
+    main {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    main h2 {
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 0.3em;
+      margin-bottom: 1em;
+    }
+
+    .box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--accent-color);
+      padding: 1.5em;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em;
+      border-top: 2px solid var(--accent-color);
+      margin-top: 3em;
+    }
+
+    nav {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10; 
+}
+
+.dropdown > a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.dropdown > a:hover {
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--accent-color);
+  min-width: 160px;
+  z-index: 999;
+  top: 100%;
+  left: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.dropdown-content a {
+  color: var(--accent-color);
+  padding: 0.7em 1em;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.top-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--accent-color);
+  z-index: 1000;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.search-bar input[type="text"] {
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.search-bar button {
+  padding: 0.4em 0.6em;
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: var(--accent-color-hover);
+}
+
+
+.edge-image {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  z-index: 1;
+}
+
+.edge-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.3em;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.edge-image.left {
+  left: 10px;
+}
+
+.edge-image.right {
+  right: 10px;
+}
+
+@media (max-width: 900px) {
+  .edge-image {
+    display: none;
+  }
+}
+
+.box h3 {
+  color: var(--accent-color);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 0.5em;
+}
+
+.tooltip {
+  position: relative;
+  cursor: help;
+  color: var(--accent-color);
+  border-bottom: 1px dotted var(--accent-color);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  max-width: 260px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: var(--text-color);
+  text-align: left;
+  border: 1px solid var(--accent-color);
+  padding: 0.5em;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 100;
+  bottom: 125%; 
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.9em;
+  box-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+  .abnormalities-grid {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25em;
+  }
+
+  .abnormality-card {
+    background-color: rgba(197, 157, 95, 0.1); 
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 1em 1.2em;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-align: center;
+    color: var(--accent-color);
+    cursor: default;
+    user-select: none;
+    box-shadow: 0 0 10px rgba(197, 157, 95, 0.2);
+    transition: 
+      background-color 0.3s ease, 
+      box-shadow 0.3s ease, 
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .abnormality-card:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
+    transform: translateY(-6px) scale(1.05);
+  }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Library</h1>
+    <p>Welcome, dear Guest. Your book awaits.</p>
+
+
+
+  <nav>
+    <div class="dropdown">
+    <a href="Website Final.html">Home</a>
+      <div class="dropdown-content"></div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Characters</a>
+      <div class="dropdown-content">
+        <a href="librarians.html">Librarians</a>
+        <a href="Guests.html">Guests</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Books</a>
+      <div class="dropdown-content">
+        <a href="Combat Pages.html">Combat Pages</a>
+        <a href="Key Pages.html">Key Pages</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Battles</a>
+      <div class="dropdown-content">
+        <a href="Receptions.html">Receptions</a>
+        <a href="Abnormalities.html">Abnormalities</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="Contact.html">Contact</a>
+      <div class="dropdown-content"></div>
+    </div>
+  </nav>
+
+<main>
+  <h2>Abnormalities</h2>
+  <div class="box">
+    <div class="box">
+    <p>
+      Abnormality Suppressions are unique, lore-rich combat encounters that take place in the Lower Floors of the Library. These battles revolve around suppressing Abnormalities — mysterious, often horrifying entities born from distorted human emotions and thoughts. Each Abnormality presents a different challenge, both narratively and mechanically.
+    </p>
+
+    <h3>How They Work</h3>
+    <p>
+      Unlike standard Receptions, Suppressions often involve special rules, phases, and gimmicks that test a player's adaptability and understanding of the game's deeper mechanics. They also serve as a reflection of the Librarians who face them, unlocking powerful E.G.O pages and progressing the story of the Library's internal departments.
+    </p>
+    <p>
+      Suppressions are unlocked progressively as the player advances through the main story and completes emotional thresholds in the Lower Floors (e.g., Yesod, Netzach, Hod, etc.). Each floor has its own set of Abnormalities that must be faced and suppressed in order to reach the floor's realization stage.
+    </p>
+
+    <h3>Key Features of Suppressions</h3>
+    <ul>
+      <li><strong>Unique Mechanics:</strong> Each Abnormality has signature behaviors, resistances, and patterns that require tailored strategies to overcome.</li>
+      <li><strong>Multiple Phases:</strong> Some Suppressions involve evolving phases, where the Abnormality changes form, abilities, or even battlefield rules.</li>
+      <li><strong>Emotion Management:</strong> Managing your emotion levels is crucial, as both player and enemy powers escalate based on emotional energy.</li>
+      <li><strong>E.G.O Gifts:</strong> Defeating an Abnormality may grant E.G.O gifts—permanent equipment that strengthens a Librarian with passive effects.</li>
+    </ul>
+
+    <h3>Floor Realizations</h3>
+    <p>
+      Successfully suppressing all Abnormalities on a floor unlocks its Realization battle — a climactic fight that symbolizes the emotional growth and resolution of that floor's Librarians. These fights are not only mechanically challenging but are heavily tied into the narrative development of the floor’s Sephirah.
+    </p>
+
+    <h3>Strategic Importance</h3>
+    <p>
+      Mastering Abnormality Suppressions is vital for preparing your team to face the Library’s most difficult Guests, especially during the final acts of the story. The E.G.O pages and gifts obtained can significantly improve a team's synergy and survivability.
+    </p>
+
+
+    <div class="abnormalities-grid" aria-label="List of Abnormalities">
+      <div class="abnormality-card">Bloodbath</div>
+      <div class="abnormality-card">Heart of Aspiration</div>
+      <div class="abnormality-card">Pinocchio</div>
+      <div class="abnormality-card">Snow Queen</div>
+      <div class="abnormality-card">Scorched Girl</div>
+      <div class="abnormality-card">Happy Teddy Bear</div>
+      <div class="abnormality-card">Fairy Festival</div>
+      <div class="abnormality-card">Queen Bee</div>
+      <div class="abnormality-card">Forsaken Murderer</div>
+      <div class="abnormality-card">All-Around Helper</div>
+      <div class="abnormality-card">Singing Machine</div>
+      <div class="abnormality-card">Funeral Of Dead Butterflies</div>
+      <div class="abnormality-card">Today's Shy Look</div>
+      <div class="abnormality-card">Red Shoes</div>
+      <div class="abnormality-card">Spider Bud</div>
+      <div class="abnormality-card">Laetita</div>
+      <div class="abnormality-card">Fragment Of The Universe</div>
+      <div class="abnormality-card">Child Of The Galaxy</div>
+      <div class="abnormality-card">Porccubus</div>
+      <div class="abnormality-card">Alriune</div>
+      <div class="abnormality-card">Queen Of Hatred</div>
+      <div class="abnormality-card">Knight Of Despair</div>
+      <div class="abnormality-card">King Of Greed</div>
+      <div class="abnormality-card">Servant Of Wrath</div>
+      <div class="abnormality-card">Little Red Riding Hooded Mercenary</div>
+      <div class="abnormality-card">Big And Will Be Bad Wolf</div>
+      <div class="abnormality-card">Mountain Of Smiling Bodies</div>
+      <div class="abnormality-card">Nosferatu</div>
+      <div class="abnormality-card">Scarecrow Searching For Wisdom</div>
+      <div class="abnormality-card">Warm-Hearted Woodsman</div>
+      <div class="abnormality-card">The Road Home And Scaredy Cat</div>
+      <div class="abnormality-card">Ozma</div>
+      <div class="abnormality-card">Big Bird</div>
+      <div class="abnormality-card">Punishing Bird</div>
+      <div class="abnormality-card">Judgement Bird</div>
+      <div class="abnormality-card">Burrowing Heaven</div>
+      <div class="abnormality-card">Price Of Silence</div>
+      <div class="abnormality-card">Blue Star</div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

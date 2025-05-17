@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Library of Ruina Fan Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #0b0b0f;
+      --text-color: #e0e0e0;
+      --accent-color: #c59d5f;
+      --button-bg: #222;
+      --button-hover: #c59d5f;
+      --nav-bg: #161616;
+      --header-bg: #111;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      padding: 2em;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: var(--accent-color);
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+
+    nav {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em 0;
+      border-bottom: 2px solid var(--accent-color);
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown > a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5em 1em;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .dropdown > a:hover {
+      text-shadow: 0 0 8px var(--accent-color);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 1px solid var(--accent-color);
+      min-width: 160px;
+      z-index: 999;
+      top: 100%;
+      left: 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+
+    .dropdown-content a {
+      color: var(--accent-color);
+      padding: 0.7em 1em;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 0.3em;
+      margin-bottom: 1em;
+    }
+
+    .box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--accent-color);
+      padding: 1.5em;
+      border-radius: 10px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 1em 0 0.3em;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    .contact-form input {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.8em;
+  background-color: #1c1c1f;
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8em;
+  background-color: #1c1c1f;
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 1em;
+  resize: vertical;
+  height: 150px;
+}
+
+
+    .contact-form textarea {
+      resize: vertical;
+      height: 150px;
+    }
+
+    .contact-form button {
+      margin-top: 1.5em;
+      padding: 0.8em 1.5em;
+      background-color: var(--button-bg);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: var(--button-hover);
+      color: var(--text-color);
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em;
+      border-top: 2px solid var(--accent-color);
+      margin-top: 3em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Library</h1>
+    <p>Welcome, dear Guest. Your book awaits.</p>
+  </header>
+
+  <nav>
+    <div class="dropdown">
+      <a href="Website Final.html">Home</a>
+    </div>
+    <div class="dropdown">
+      <a href="#">Characters</a>
+      <div class="dropdown-content">
+        <a href="librarians.html">Librarians</a>
+        <a href="Guests.html">Guests</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Books</a>
+      <div class="dropdown-content">
+        <a href="Combat Pages.html">Combat Pages</a>
+        <a href="Key Pages.html">Key Pages</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Battles</a>
+      <div class="dropdown-content">
+        <a href="Receptions.html">Receptions</a>
+        <a href="Abnormalities.html">Abnormalities</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="Contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <h2>Contact Us</h2>
+    <div class="box">
+      <form class="contact-form" action="#" method="post">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Library. All Rights Reserved.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Librarians - Library of Ruina Fan Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #0b0b0f;
+      --text-color: #e0e0e0;
+      --accent-color: #c59d5f;
+      --button-bg: #222;
+      --button-hover: #c59d5f;
+      --nav-bg: #161616;
+      --header-bg: #111;
+    }
+
+    body.dark-mode {
+      --bg-color: #e0e0e0;
+      --text-color: #111;
+      --accent-color: #914e2d;
+      --button-bg: #ccc;
+      --button-hover: #914e2d;
+      --nav-bg: #f0f0f0;
+      --header-bg: #ddd;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      padding: 2em;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: var(--accent-color);
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+
+
+    nav {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em 0;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    nav a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 1.5em;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-shadow: 0 0 8px var(--accent-color);
+    }
+
+    main {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    main h2 {
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 0.3em;
+      margin-bottom: 1em;
+    }
+
+    .box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--accent-color);
+      padding: 1.5em;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      text-align: center;
+      padding: 1em;
+      border-top: 2px solid var(--accent-color);
+      margin-top: 3em;
+    }
+
+    nav {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10; 
+}
+
+.dropdown > a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.dropdown > a:hover {
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--accent-color);
+  min-width: 160px;
+  z-index: 999;
+  top: 100%;
+  left: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.dropdown-content a {
+  color: var(--accent-color);
+  padding: 0.7em 1em;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.top-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--accent-color);
+  z-index: 1000;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.search-bar input[type="text"] {
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.search-bar button {
+  padding: 0.4em 0.6em;
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: var(--accent-color-hover);
+}
+
+
+.edge-image {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  z-index: 1;
+}
+
+.edge-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.3em;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.edge-image.left {
+  left: 10px;
+}
+
+.edge-image.right {
+  right: 10px;
+}
+
+@media (max-width: 900px) {
+  .edge-image {
+    display: none;
+  }
+}
+
+.box h3 {
+  color: var(--accent-color);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 0.5em;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Library</h1>
+    <p>Welcome, dear Guest. Your book awaits.</p>
+
+
+
+  <nav>
+    <div class="dropdown">
+    <a href="Website Final.html">Home</a>
+      <div class="dropdown-content"></div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Characters</a>
+      <div class="dropdown-content">
+        <a href="librarians.html">Librarians</a>
+        <a href="Guests.html">Guests</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Books</a>
+      <div class="dropdown-content">
+        <a href="Combat Pages.html">Combat Pages</a>
+        <a href="Key Pages.html">Key Pages</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Battles</a>
+      <div class="dropdown-content">
+        <a href="Receptions.html">Receptions</a>
+        <a href="Abnormalities.html">Abnormalities</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="Contact.html">Contact</a>
+      <div class="dropdown-content"></div>
+    </div>
+  </nav>
+
+<main>
+  <h2>Receptions</h2>
+  <div class="box">
+<div class="box">
+  <p>Welcome to the Receptions page! Here you can find detailed info about how Receptions work in <em>Library of Ruina</em>.</p>
+  <h3>What Are Receptions?</h3>
+  <p>Receptions are the core battle encounters in <em>Library of Ruina</em>, where invited Guests arrive at the Library to face off against the Librarians in combat. Each Reception is themed, story-driven, and escalates the narrative and gameplay complexity as you progress.</p>
+
+  <h3>How Receptions Are Initiated</h3>
+  <p>To initiate a Reception, the player must <strong>burn books</strong> obtained from previous battles. Burning a book reveals its contents and may yield other books or new Key Pages and Combat Pages. Certain combinations of burned books unlock new Guests who are then invited to a Reception.</p>
+
+  <ul>
+    <li><strong>Book Burning:</strong> Unlocks potential Receptions by revealing hidden Invitations.</li>
+    <li><strong>Invitations:</strong> Each Reception requires a specific book (or set of books) as an offering to summon Guests.</li>
+  </ul>
+
+  <h3>Reception Structure</h3>
+  <p>Once a Reception begins, the player chooses a team of Librarians to engage in battle against the invited Guests. Each team is equipped with <strong>Key Pages</strong> (which function like character loadouts) and <strong>Combat Pages</strong> (cards used during battle).</p>
+
+  <ul>
+    <li><strong>Pre-Battle Preparation:</strong> Choose your team, assign pages, and prepare for the specific Guests' mechanics.</li>
+    <li><strong>Combat:</strong> The battle plays out using a dynamic speed dice and clash system where positioning, timing, and deck synergy are crucial.</li>
+  </ul>
+
+  <h3>Rewards and Progression</h3>
+  <p>Winning a Reception rewards you with new books—sometimes rare or unique ones—and occasionally unlocks new story Receptions. Defeating certain key Guests advances the plot and opens access to new Floors or Abnormality Battles.</p>
+
+  <ul>
+    <li><strong>Books:</strong> Used to strengthen your team or unlock future Receptions.</li>
+    <li><strong>Key Pages and Combat Pages:</strong> Customize Librarians with powerful new builds.</li>
+  </ul>
+
+  <h3>Story and Difficulty Scaling</h3>
+  <p>Receptions increase in difficulty as the game progresses. Later Receptions may feature:
+    <ul>
+      <li>Multiple waves of enemies</li>
+      <li>Unique passive abilities</li>
+      <li>Stage gimmicks or battle conditions</li>
+    </ul>
+  </p>
+  <p>Understanding enemy patterns and deck optimization becomes vital to victory. Every battle is both a test of strategy and a continuation of the Library’s dark tale.</p>
+
+  <h3>Tips for Success</h3>
+  <ul>
+    <li>Read enemy passives carefully before battle.</li>
+    <li>Experiment with different Key Pages to counter specific strategies.</li>
+    <li>Use Floor Abilities and Librarian synergy to your advantage.</li>
+  </ul>
+
+  <p>With every successful Reception, the Library grows stronger, and the secrets of the world outside are slowly revealed—one book at a time.</p>
+
+  <main>
+  <h2>Receptions in Library of Ruina</h2>
+  <div class="box">
+    <h3>Canard Level</h3>
+    <ul>
+      <li>Yun's Office</li>
+      <li>Streetlight Office</li>
+      <li>Zwei Association South Section 6</li>
+      <li>Hook Office</li>
+      <li>Shi Association South Section 5</li>
+      <li>Full-Stop Office</li>
+      <li>Wedge Office</li>
+      <li>Stray Dogs</li>
+      <li>The 8 o'Clock Circus</li>
+      <li>Sweepers</li>
+    </ul>
+
+    <h3>Urban Myth</h3>
+    <ul>
+      <li>Liu Association South Section 2</li>
+      <li>Musicians of Bremen</li>
+      <li>Gaze Office</li>
+      <li>Index Proselytes</li>
+      <li>Warp Cleanup Crew</li>
+      <li>Lobotomy Corporation Remnants</li>
+    </ul>
+
+    <h3>Urban Legend</h3>
+    <ul>
+      <li>Liu Association South Section 4</li>
+      <li>Love Town</li>
+      <li>R Corp.</li>
+      <li>Zwei Association South Section 2</li>
+      <li>The Crying Children</li>
+    </ul>
+
+    <h3>Urban Plague</h3>
+    <ul>
+      <li>Liu Association South Section 3</li>
+      <li>R Corp. II</li>
+      <li>Gaze Office II</li>
+      <li>The Red Mist</li>
+    </ul>
+
+    <h3>Urban Nightmare</h3>
+    <ul>
+      <li>Liu Association South Section 1</li>
+      <li>R Corp. III</li>
+      <li>The Blue Reverberation</li>
+    </ul>
+
+    <h3>Star of the City</h3>
+    <ul>
+      <li>Hana Association</li>
+      <li>The Purple Tear</li>
+      <li>The Black Silence</li>
+      <li>The Reverb Ensemble</li>
+      <li>The Reverb Ensemble Distorted</li>
+    </ul>
+  </div>
+</main>
+
+
+</body>
+</html>
